@@ -12,7 +12,8 @@ import javax.inject.Singleton
     LocalDataSourceModule::class,
     RemoteDataSourceModule::class,
     RepositoryModule::class,
-    UseCaseModule::class
+    UseCaseModule::class,
+MovieFragmentModule::class
 ])
 interface AppComponent {
     fun movieSubComponent():MovieSubComponent.Factory
