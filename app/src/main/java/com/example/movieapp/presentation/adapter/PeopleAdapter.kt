@@ -20,7 +20,8 @@ class PeopleAdapter(val context: Context): RecyclerView.Adapter<PeopleAdapter.My
     }
     class MyViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(people: People){
-            binding.descText.text="Popular Movies: "+ people.movies.joinToString()
+
+            binding.descText.text="Popular Movies: ${people.movies.map { it -> it.title }.joinToString() }"
             binding.titleText.text=people.name
             val posterUrl="https://image.tmdb.org/t/p/w500"+ people.image
             Glide.with(binding.imageView.context).load(posterUrl).into(binding.imageView)
