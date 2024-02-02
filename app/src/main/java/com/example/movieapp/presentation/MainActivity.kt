@@ -38,10 +38,11 @@ class MainActivity : AppCompatActivity() {
         (application as Injector).createMovieSubComponent().inject(this)
         fragmentBinding = FragmentMovieBinding.inflate(layoutInflater)
         viewModel = ViewModelProvider(this, factory).get(MovieViewModel::class.java)
-        initRecyclerView()
+        initLayoutView()
     }
 
-    private fun initRecyclerView() {
+    private fun initLayoutView() {
+        adapter=MovieAdapter(applicationContext)
         val myAdapter = ViewPagerAdapter(supportFragmentManager, lifecycle,factory)
         binding.viewPager.adapter = myAdapter
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
@@ -80,7 +81,6 @@ class MainActivity : AppCompatActivity() {
                 updateMovies()
                 true
             }
-
             else -> super.onOptionsItemSelected(item)
 
         }

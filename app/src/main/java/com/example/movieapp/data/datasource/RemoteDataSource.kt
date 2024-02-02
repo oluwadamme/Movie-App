@@ -1,9 +1,11 @@
 package com.example.movieapp.data.datasource
 
 import com.example.movieapp.data.model.MovieList
+import com.example.movieapp.data.model.PeopleList
 import retrofit2.Response
 
-interface MovieRemoteDataSource {
+interface RemoteDataSource {
     suspend fun getMovies():Response<MovieList>
+    suspend fun getPeople():Response<PeopleList>
 
 }

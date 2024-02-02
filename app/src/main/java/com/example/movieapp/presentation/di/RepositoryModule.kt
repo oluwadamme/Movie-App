@@ -1,10 +1,10 @@
 package com.example.movieapp.presentation.di
 
-import com.example.movieapp.data.MovieRepositoryImpl
-import com.example.movieapp.data.datasource.MovieCacheDataSource
-import com.example.movieapp.data.datasource.MovieLocalDataSource
-import com.example.movieapp.data.datasource.MovieRemoteDataSource
-import com.example.movieapp.domain.repository.MovieRepository
+import com.example.movieapp.data.RepositoryImpl
+import com.example.movieapp.data.datasource.CacheDataSource
+import com.example.movieapp.data.datasource.LocalDataSource
+import com.example.movieapp.data.datasource.RemoteDataSource
+import com.example.movieapp.domain.repository.Repository
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -13,7 +13,7 @@ import javax.inject.Singleton
 class RepositoryModule {
     @Singleton
     @Provides
-    fun providesMoviesRepository(movieRemoteDataSource: MovieRemoteDataSource,movieLocalDataSource: MovieLocalDataSource,movieCacheDataSource: MovieCacheDataSource):MovieRepository{
-        return MovieRepositoryImpl(movieRemoteDataSource,movieLocalDataSource,movieCacheDataSource)
+    fun providesMoviesRepository(remoteDataSource: RemoteDataSource, localDataSource: LocalDataSource, cacheDataSource: CacheDataSource):Repository{
+        return RepositoryImpl(remoteDataSource,localDataSource,cacheDataSource)
     }
 }

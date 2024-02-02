@@ -1,10 +1,7 @@
 package com.example.movieapp.presentation.di
 
-import com.example.movieapp.data.datasource.MovieCacheDataSource
-import com.example.movieapp.data.datasource.MovieLocalDataSource
-import com.example.movieapp.data.datasourceimpl.MovieCacheDataSourceImpl
-import com.example.movieapp.data.datasourceimpl.MovieLocalDataSourceImpl
-import com.example.movieapp.data.db.TMDBDatabase
+import com.example.movieapp.data.datasource.CacheDataSource
+import com.example.movieapp.data.datasourceimpl.CacheDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -13,7 +10,7 @@ import javax.inject.Singleton
 class CacheDataSourceModule {
     @Singleton
     @Provides
-    fun providesMovieLocalDataSource(): MovieCacheDataSource {
-        return MovieCacheDataSourceImpl()
+    fun providesMovieLocalDataSource(): CacheDataSource {
+        return CacheDataSourceImpl()
     }
 }
