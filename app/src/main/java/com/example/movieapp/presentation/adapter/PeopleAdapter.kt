@@ -8,21 +8,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movieapp.R
 import com.example.movieapp.data.model.Movie
+import com.example.movieapp.data.model.People
 import com.example.movieapp.databinding.ListItemBinding
 
-class MovieAdapter(val context: Context) : RecyclerView.Adapter<MovieAdapter.MyViewHolder>() {
-    val movieList = ArrayList<Movie>()
+class PeopleAdapter(val context: Context): RecyclerView.Adapter<PeopleAdapter.MyViewHolder>()  {
+    val peopleList=ArrayList<People>()
 
-    fun setList(movies: List<Movie>) {
-        movieList.clear()
-        movieList.addAll(movies)
+    fun setList(people: List<People>){
+        peopleList.clear()
+        peopleList.addAll(people)
     }
-
-    class MyViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(movie: Movie) {
-            binding.descText.text = movie.overview
-            binding.titleText.text = movie.title
-            val posterUrl = "https://image.tmdb.org/t/p/w500" + movie.posterPath
+    class MyViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root){
+        fun bind(people: People){
+            binding.descText.text="Popular Movies: "+ people.movies.joinToString()
+            binding.titleText.text=people.name
+            val posterUrl="https://image.tmdb.org/t/p/w500"+ people.image
             Glide.with(binding.imageView.context).load(posterUrl).into(binding.imageView)
         }
     }
@@ -35,11 +35,10 @@ class MovieAdapter(val context: Context) : RecyclerView.Adapter<MovieAdapter.MyV
     }
 
     override fun getItemCount(): Int {
-        return movieList.size
+       return peopleList.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(movieList[position])
+        holder.bind(peopleList[position])
     }
-
 }

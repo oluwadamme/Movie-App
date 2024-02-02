@@ -16,7 +16,7 @@ class ViewPagerAdapter(fragmentManager: FragmentManager,lifecycle: Lifecycle,val
 
     override fun createFragment(position: Int): Fragment {
         when(position){
-            0 -> return PeopleFragment()
+            0 -> return PeopleFragment(factory)
             1 -> return MovieFragment(factory)
         }
         return TVFragment()
