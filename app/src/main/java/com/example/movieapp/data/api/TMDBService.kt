@@ -11,5 +11,5 @@ interface TMDBService {
     suspend fun getPopularMovies(@Query("api_key") apiKey: String): Response<MovieList>
 
     @GET("person/popular")
-    suspend fun getPopularPeople(@Query("api_key") apiKey: String): Response<PeopleList>
+    suspend fun getPopularPeople(@Query("api_key") apiKey: String, @Query("page") page:Int=1): Response<PeopleList>
 }

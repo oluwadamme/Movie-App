@@ -6,6 +6,6 @@ import retrofit2.Response
 
 interface RemoteDataSource {
     suspend fun getMovies():Response<MovieList>
-    suspend fun getPeople():Response<PeopleList>
+    suspend fun getPeople(page: Int):Response<PeopleList>
 
 }

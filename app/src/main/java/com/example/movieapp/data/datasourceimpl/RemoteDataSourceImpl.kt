@@ -6,12 +6,16 @@ import com.example.movieapp.data.model.MovieList
 import com.example.movieapp.data.model.PeopleList
 import retrofit2.Response
 
-class RemoteDataSourceImpl(private val tmdbService: TMDBService, private val apiKey:String):RemoteDataSource {
+class RemoteDataSourceImpl(
+    private val tmdbService: TMDBService,
+    private val apiKey: String,
+
+) : RemoteDataSource {
     override suspend fun getMovies(): Response<MovieList> {
-       return tmdbService.getPopularMovies(apiKey)
+        return tmdbService.getPopularMovies(apiKey)
     }
 
-    override suspend fun getPeople(): Response<PeopleList> {
-      return  tmdbService.getPopularPeople(apiKey)
+    override suspend fun getPeople(page: Int): Response<PeopleList> {
+        return tmdbService.getPopularPeople(apiKey, page)
     }
 }

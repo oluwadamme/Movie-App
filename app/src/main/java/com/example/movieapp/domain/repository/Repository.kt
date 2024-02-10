@@ -8,5 +8,5 @@ interface Repository {
     suspend fun getMovies():List<Movie>?
     suspend fun updateMovies():List<Movie>?
 
-    suspend fun getPeople():List<People>?
+    suspend fun getPeople(page:Int):List<People>?
 }

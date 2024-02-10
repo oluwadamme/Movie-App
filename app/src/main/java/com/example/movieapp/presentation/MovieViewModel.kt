@@ -12,8 +12,8 @@ class MovieViewModel(private val getMethodUseCase: GetMethodUseCase, private val
         emit(movieList)
     }
 
-    fun getPeople()=liveData{
-        val people=getMethodUseCase.getPeople()
+    fun getPeople(page:Int)=liveData{
+        val people=getMethodUseCase.getPeople(page)
         emit(people)
     }
     fun updateMovies()=liveData{

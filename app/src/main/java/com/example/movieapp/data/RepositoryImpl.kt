@@ -15,7 +15,7 @@ class RepositoryImpl(
     override suspend fun getMovies(): List<Movie>? {
         return getMoviesFromCache()
     }
-
+var pageNumber:Int=1
 
     override suspend fun updateMovies(): List<Movie> {
         val listOfNewMovies = getMoviesFromApi()
@@ -25,7 +25,8 @@ class RepositoryImpl(
         return listOfNewMovies
     }
 
-    override suspend fun getPeople(): List<People>? {
+    override suspend fun getPeople(page:Int): List<People>? {
+        pageNumber =page
         return getPeopleFromCache()
     }
 
@@ -112,17 +113,17 @@ class RepositoryImpl(
         if (peopleList.size > 0) {
             return peopleList
         } else {
-            peopleList = getPeopleFromApi()
+            peopleList = getPeopleFromApi(pageNumber)
             localDataSource.savePeopleIntoDB(peopleList)
         }
         return peopleList
     }
 
-    suspend fun getPeopleFromApi(): List<People> {
+    suspend fun getPeopleFromApi(page:Int): List<People> {
         lateinit var peopleList: List<People>
 
         try {
-            val response = remoteDataSource.getPeople()
+            val response = remoteDataSource.getPeople(page)
             val body = response.body()
             if (body != null) {
                 peopleList = body.movies

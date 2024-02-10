@@ -6,5 +6,5 @@ import com.example.movieapp.domain.repository.Repository
 
 class GetMethodUseCase(private val repository: Repository) {
     suspend fun execute():List<Movie>?=repository.getMovies()
-    suspend fun getPeople():List<People>?=repository.getPeople()
+    suspend fun getPeople(page:Int):List<People>?=repository.getPeople(page)
 }
